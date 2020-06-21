@@ -68,7 +68,7 @@ hchart(minciencia_capitulos, "column",
 ```
 # Programas
 
-Ahora veamos que capitulos contiene la partida del Poder Judicial, pero antes
+Ahora veamos que capitulos contiene la partida del Ministerio de Ciencia, pero antes
 debo obtener los `id` de los capítulo para cada año ya que van cambiando.
 ```{r}
 minciencia_id_2 <- capitulos %>%
@@ -83,5 +83,5 @@ minciencia_programas
 
 hchart(minciencia_programas, "column",
        hcaes(x = anio, y = valor_asignado_programa, group = nombre_programa)) %>%
-  hc_title(text = "Evolucion del presupuesto del Poder Judicial por Programa")
+  hc_title(text = "Evolucion del presupuesto del Ministerio de Ciencia por Programa")
 ```
