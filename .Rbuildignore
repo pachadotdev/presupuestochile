@@ -1,0 +1,8 @@
+^presupuestochile\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+data-.*
+links-.*
+dev
+docs
+^codemeta\.json$

@@ -1,0 +1,8 @@
+pandoc: 2.7.3
+pkgdown: 1.5.1
+pkgdown_sha: ~
+articles:
+  visualizando-datos-del-ministerio-de-ciencia: visualizando-datos-del-ministerio-de-ciencia.html
+  visualizando-datos-del-poder-judicial: visualizando-datos-del-poder-judicial.html
+last_built: 2020-06-21T04:17Z
+

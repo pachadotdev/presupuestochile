@@ -1,0 +1,84 @@
+---
+title: "Visualizando Datos del Poder Judicial"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Visualizando Datos del Poder Judicial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>"
+)
+```
+
+# Objetivo
+
+Estos datos tienen varios anios con informacion y estan detallados, por lo que
+conviene usar graficos de lineas.
+
+# Partidas
+
+Carga de paquetes:
+```{r}
+library(dplyr)
+library(highcharter)
+library(presupuestochile)
+```
+
+Puedo saber de inmediato el presupuesto agregado del Poder Judicial:
+```{r}
+pjud_agregado <- partidas %>% 
+  filter(nombre_partida == "PODER JUDICIAL") %>% 
+  select(anio, nombre_partida, valor_asignado_partida)
+
+pjud_agregado
+
+hchart(pjud_agregado, "line",
+       hcaes(x = anio, y = valor_asignado_partida)) %>% 
+  hc_title(text = "Evolucion del presupuesto del Poder Judicial") 
+```
+
+# Capítulos
+
+Ahora veamos que capitulos contiene la partida del Poder Judicial, pero antes
+debo obtener los `id` de las partidas para cada año ya que van cambiando.
+```{r}
+pjud_id <- partidas %>% 
+  filter(nombre_partida == "PODER JUDICIAL") %>% 
+  select(anio, id_partida)
+
+pjud_capitulos <- capitulos %>% 
+  inner_join(pjud_id) %>% 
+  select(anio, nombre_capitulo, valor_asignado_capitulo)
+
+pjud_capitulos
+
+hchart(pjud_capitulos, "line",
+       hcaes(x = anio, y = valor_asignado_capitulo, group = nombre_capitulo)) %>% 
+  hc_title(text = "Evolucion del presupuesto del Poder Judicial por Capitulo") 
+```
+
+# Programas
+
+Ahora veamos que capitulos contiene la partida del Poder Judicial, pero antes
+debo obtener los `id` de los capítulo para cada año ya que van cambiando.
+```{r}
+pjud_id_2 <- capitulos %>% 
+  inner_join(pjud_id) %>% 
+  select(anio, id_capitulo)
+
+pjud_programas <- programas %>% 
+  inner_join(pjud_id_2) %>% 
+  select(anio, nombre_programa, valor_asignado_programa)
+
+pjud_programas
+
+hchart(pjud_programas, "line",
+       hcaes(x = anio, y = valor_asignado_programa, group = nombre_programa)) %>% 
+  hc_title(text = "Evolucion del presupuesto del Poder Judicial por Programa") 
+```

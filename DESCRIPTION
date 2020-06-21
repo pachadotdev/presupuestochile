@@ -1,0 +1,27 @@
+Package: presupuestochile
+Title: Presupuesto de la Nacion de Chile
+Version: 0.0.0.9000
+Authors@R: c(
+  person(given = "Mauricio",
+    family = "Vargas",
+    role = c("aut","cre"),
+    email = "mvargas@dcc.uchile.cl",
+    comment = c(ORCID = "0000-0003-1017-7574")),
+  person(family = "Direccion de Presupuestos (DIPRES)",
+    role = "dtc")
+  )
+Description: Proporciona los datos del Presupuesto de la Nacion de Chile en
+  formato Tidy Data.
+License: CC0
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
+Depends: 
+  R (>= 2.10)
+Suggests: 
+    dplyr,
+    highcharter,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

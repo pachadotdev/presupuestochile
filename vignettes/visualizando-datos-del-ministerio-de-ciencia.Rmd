@@ -1,0 +1,87 @@
+---
+title: "Visualizando Datos del Ministerio de Ciencia"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Visualizando Datos del Ministerio de Ciencia}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>"
+)
+```
+
+# Objetivo
+
+Estos datos tienen informacion detallada para el anio 2020, por lo que
+conviene usar graficos de columnas y treemaps.
+
+# Partidas
+
+Carga de paquetes:
+```{r}
+library(dplyr)
+library(highcharter)
+library(presupuestochile)
+```
+
+Para tener una idea del peso relativo del Ministerio de Ciencia, se puede
+apreciar el siguiente treemap:
+```{r}
+partidas_2020 <- partidas %>% 
+  filter(anio == 2020) %>% 
+  mutate(
+    nombre_partida = gsub(",.*", "", nombre_partida),
+    nombre_partida = gsub("MINISTERIO DE|MINISTERIO DEL|MINISTERIO DE LAS", "MIN", nombre_partida)
+  )
+
+hchart(partidas_2020, "treemap",
+       hcaes(x = nombre_partida, value = valor_asignado_partida, 
+             color = log(valor_asignado_partida))) %>%
+  hc_title(text = "Distribucion del Presupuesto de la Nacion por Partida")
+```
+
+# Capítulos
+
+Veamos que capitulos contiene la partida del Ministerio de Ciencia, pero antes
+debo obtener el `id` de la partida.
+```{r}
+minciencia_id <- partidas %>%
+  filter(nombre_partida == "MINISTERIO DE CIENCIA, TECNOLOGÍA, CONOCIMIENTO E INNOVACIÓN") %>%
+  select(anio, id_partida, valor_asignado_partida) %>% 
+  filter(valor_asignado_partida > 0)
+
+minciencia_capitulos <- capitulos %>%
+  inner_join(minciencia_id) %>%
+  select(anio, nombre_capitulo, valor_asignado_capitulo)
+
+minciencia_capitulos
+
+hchart(minciencia_capitulos, "column",
+       hcaes(x = anio, y = valor_asignado_capitulo, group = nombre_capitulo)) %>%
+  hc_title(text = "Evolucion del presupuesto del Ministerio de Ciencia por Capitulo")
+```
+# Programas
+
+Ahora veamos que capitulos contiene la partida del Poder Judicial, pero antes
+debo obtener los `id` de los capítulo para cada año ya que van cambiando.
+```{r}
+minciencia_id_2 <- capitulos %>%
+  inner_join(minciencia_id) %>%
+  select(anio, id_capitulo)
+
+minciencia_programas <- programas %>%
+  inner_join(minciencia_id_2) %>%
+  select(anio, nombre_programa, valor_asignado_programa)
+
+minciencia_programas
+
+hchart(minciencia_programas, "column",
+       hcaes(x = anio, y = valor_asignado_programa, group = nombre_programa)) %>%
+  hc_title(text = "Evolucion del presupuesto del Poder Judicial por Programa")
+```
