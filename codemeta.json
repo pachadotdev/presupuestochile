@@ -102,7 +102,7 @@
   ],
   "codeRepository": "https://github.com/pachamaltese/presupuestochile",
   "readme": "https://github.com/pachamaltese/presupuestochile/blob/master/README.md",
-  "fileSize": "1401.044KB",
+  "fileSize": "1401.236KB",
   "keywords": [
     "r",
     "chile",
@@ -110,5 +110,6 @@
     "nacion",
     "tidydata"
   ],
-  "issueTracker": "https://github.com/pachamaltese/presupuestochile/issues"
+  "issueTracker": "https://github.com/pachamaltese/presupuestochile/issues",
+  "developmentStatus": "https://www.repostatus.org/#wip"
 }

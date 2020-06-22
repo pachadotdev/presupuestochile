@@ -22,3 +22,9 @@ Se puede instalar desde GitHub con el siguiente comando:
 ``` r
 source("https://install-github.me/pachamaltese/presupuestochile")
 ```
+
+## Fuentes
+
+Todos los datos en bruto son generados por DIPRES y están disponibles en <http://presupuesto.bcn.cl/presupuesto/api>.
+
+Para evitar colapsar el repositorio con más de 38.000 archivos pequenios, dejé disponibles los archivos 7z que contienen las descargar en bruto en la raiz del proyecto.
