@@ -27,4 +27,4 @@ source("https://install-github.me/pachamaltese/presupuestochile")
 
 Todos los datos en bruto son generados por DIPRES y están disponibles en <http://presupuesto.bcn.cl/presupuesto/api>.
 
-Para evitar colapsar el repositorio con más de 38.000 archivos pequenios, dejé disponibles los archivos 7z que contienen las descargar en bruto en la raiz del proyecto.
+Para evitar colapsar el repositorio con más de 38.000 archivos pequenios, dejé disponibles los archivos 7z que contienen las descargar en bruto en <https://github.com/pachamaltese/presupuestochile/tree/master/data-7z>
