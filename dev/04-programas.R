@@ -37,10 +37,10 @@ programas <- purrr::map_df(
       marca_temporal = lubridate::as_datetime(marca_temporal),
       nombre_programa = as.factor(nombre_programa),
       id_capitulo = str_pad(id_capitulo, width = 4, pad = "0"),
-      id_programa = str_pad(id_programa, width = 3, pad = "0"),
-      numero_programa = str_pad(numero_programa, width = 3, pad = "0"),
-      mes_ultima_ejecucion_valor_vigente_programa = str_pad(mes_ultima_ejecucion_valor_vigente_programa, width = 3, pad = "0"),
-      mes_ultima_ejecucion_ingreso_valor_vigente_programa = str_pad(mes_ultima_ejecucion_ingreso_valor_vigente_programa, width = 3, pad = "0")
+      id_programa = str_pad(id_programa, width = 4, pad = "0"),
+      numero_programa = str_pad(numero_programa, width = 2, pad = "0"),
+      mes_ultima_ejecucion_programa = str_pad(mes_ultima_ejecucion_programa, width = 2, pad = "0"),
+      mes_ultima_ejecucion_ingreso_programa = str_pad(mes_ultima_ejecucion_ingreso_programa, width = 2, pad = "0")
     )
   }
 )

@@ -8,7 +8,7 @@ Contiene el valor asignado al Presupuesto de la Nacion para cada programa, es
 decir para la Academia Judicial y la Corporacion Administrativa del
 Poder Judicial, etc.}
 \format{
-Un tibble de 246 filas y 9 columnas
+Un tibble de 2874 filas y 17 columnas
 }
 \usage{
 programas

@@ -66,6 +66,7 @@ hchart(minciencia_capitulos, "column",
        hcaes(x = anio, y = valor_asignado_capitulo, group = nombre_capitulo)) %>%
   hc_title(text = "Evolucion del presupuesto del Ministerio de Ciencia por Capitulo")
 ```
+
 # Programas
 
 Ahora veamos que capitulos contiene la partida del Ministerio de Ciencia, pero antes
@@ -83,5 +84,24 @@ minciencia_programas
 
 hchart(minciencia_programas, "column",
        hcaes(x = anio, y = valor_asignado_programa, group = nombre_programa)) %>%
-  hc_title(text = "Evolucion del presupuesto del Ministerio de Ciencia por Programa")
+  hc_title(text = "Presupuesto del Ministerio de Ciencia por Programa")
+```
+
+# Subtítulos
+
+Finalmente se puede ver el detalle (e.g gasto en personal) que se asigna a cada programa. Se procede de un modo muy similar a lo anterior.
+```{r}
+minciencia_subtitulos <- subtitulos %>%
+  inner_join(minciencia_id_2) %>%
+  inner_join(programas %>% select(nombre_programa, id_programa, id_capitulo)) %>% 
+  inner_join(capitulos %>% select(nombre_capitulo, id_capitulo)) %>% 
+  select(anio, nombre_capitulo, nombre_subtitulo, valor_asignado_subtitulo) %>% 
+  group_by(nombre_capitulo, nombre_subtitulo) %>% 
+  summarise(valor_asignado_subtitulo = sum(valor_asignado_subtitulo))
+
+minciencia_subtitulos
+
+hchart(minciencia_subtitulos, "column",
+       hcaes(x = nombre_capitulo, y = valor_asignado_subtitulo, group = nombre_subtitulo)) %>%
+  hc_title(text = "Presupuesto del Ministerio de Ciencia por Subtítulo")
 ```

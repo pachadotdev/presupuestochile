@@ -38,9 +38,9 @@ capitulos <- purrr::map_df(
       nombre_capitulo = as.factor(nombre_capitulo),
       id_partida = str_pad(id_partida, width = 3, pad = "0"),
       id_capitulo = str_pad(id_capitulo, width = 4, pad = "0"),
-      numero_capitulo = str_pad(numero_capitulo, width = 3, pad = "0"),
-      mes_ultima_ejecucion_valor_vigente_capitulo = str_pad(mes_ultima_ejecucion_valor_vigente_capitulo, width = 3, pad = "0"),
-      mes_ultima_ejecucion_ingreso_valor_vigente_capitulo = str_pad(mes_ultima_ejecucion_ingreso_valor_vigente_capitulo, width = 3, pad = "0")
+      numero_capitulo = str_pad(numero_capitulo, width = 2, pad = "0"),
+      mes_ultima_ejecucion_capitulo = str_pad(mes_ultima_ejecucion_capitulo, width = 2, pad = "0"),
+      mes_ultima_ejecucion_ingreso_capitulo = str_pad(mes_ultima_ejecucion_ingreso_capitulo, width = 2, pad = "0")
     )
   }
 )

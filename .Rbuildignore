@@ -6,3 +6,4 @@ links-.*
 dev
 docs
 ^codemeta\.json$
+.github

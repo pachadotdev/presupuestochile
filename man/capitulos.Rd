@@ -8,7 +8,7 @@ Contiene el valor asignado al Presupuesto de la Nacion para cada capitulo, es
 decir para el Senado y Camara de Diputados que pertenecen al Congreso
 Nacional, etc.}
 \format{
-Un tibble de 246 filas y 9 columnas
+Un tibble de 1903 filas y 17 columnas
 }
 \usage{
 capitulos

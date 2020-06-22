@@ -6,8 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Presupuestos (2012-2020)
-Contiene el valor asignado al Presupuesto de la Nacion por anio. — presupuestos • presupuestochile</title>
+<title>Subtitulos (2012-2020)
+Contiene el valor asignado al Presupuesto de la Nacion para cada subtitulo, es
+decir para el aporte fiscal, gastos en personal, saldo de caja de cada programa
+del Poder Judicial, etc. — subtitulos • presupuestochile</title>
 
 
 <!-- jquery -->
@@ -40,10 +42,14 @@ Contiene el valor asignado al Presupuesto de la Nacion por anio. — presupuesto
 
 
 
-<meta property="og:title" content="Presupuestos (2012-2020)
-Contiene el valor asignado al Presupuesto de la Nacion por anio. — presupuestos" />
-<meta property="og:description" content="Presupuestos (2012-2020)
-Contiene el valor asignado al Presupuesto de la Nacion por anio." />
+<meta property="og:title" content="Subtitulos (2012-2020)
+Contiene el valor asignado al Presupuesto de la Nacion para cada subtitulo, es
+decir para el aporte fiscal, gastos en personal, saldo de caja de cada programa
+del Poder Judicial, etc. — subtitulos" />
+<meta property="og:description" content="Subtitulos (2012-2020)
+Contiene el valor asignado al Presupuesto de la Nacion para cada subtitulo, es
+decir para el aporte fiscal, gastos en personal, saldo de caja de cada programa
+del Poder Judicial, etc." />
 
 
 
@@ -126,27 +132,39 @@ Contiene el valor asignado al Presupuesto de la Nacion por anio." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Presupuestos (2012-2020)
-Contiene el valor asignado al Presupuesto de la Nacion por anio.</h1>
+    <h1>Subtitulos (2012-2020)
+Contiene el valor asignado al Presupuesto de la Nacion para cada subtitulo, es
+decir para el aporte fiscal, gastos en personal, saldo de caja de cada programa
+del Poder Judicial, etc.</h1>
     <small class="dont-index">Source: <a href='https://github.com/pachamaltese/presupuestochile/blob/master/R/presupuestochile-package.R'><code>R/presupuestochile-package.R</code></a></small>
-    <div class="hidden name"><code>presupuestos.Rd</code></div>
+    <div class="hidden name"><code>subtitulos.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Presupuestos (2012-2020)
-Contiene el valor asignado al Presupuesto de la Nacion por anio.</p>
+    <p>Subtitulos (2012-2020)
+Contiene el valor asignado al Presupuesto de la Nacion para cada subtitulo, es
+decir para el aporte fiscal, gastos en personal, saldo de caja de cada programa
+del Poder Judicial, etc.</p>
     </div>
 
-    <pre class="usage"><span class='no'>presupuestos</span></pre>
+    <pre class="usage"><span class='no'>subtitulos</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Un tibble de 9 filas y 8 columnas</p>
+    <p>Un tibble de 33852 filas y 13 columnas</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p><a href='http://presupuesto.bcn.cl/presupuesto/api'>http://presupuesto.bcn.cl/presupuesto/api</a></p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>subtitulos</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'>left_join</span>(<span class='no'>programas</span> <span class='kw'>%&gt;%</span> <span class='fu'>select</span>(<span class='no'>id_programa</span>, <span class='no'>id_capitulo</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'>left_join</span>(<span class='no'>capitulos</span> <span class='kw'>%&gt;%</span> <span class='fu'>select</span>(<span class='no'>id_capitulo</span>, <span class='no'>id_partida</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'>left_join</span>(<span class='no'>partidas</span> <span class='kw'>%&gt;%</span> <span class='fu'>select</span>(<span class='no'>nombre_partida</span>, <span class='no'>id_partida</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'>select</span>(<span class='no'>nombre_partida</span>, <span class='fu'>everything</span>())
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

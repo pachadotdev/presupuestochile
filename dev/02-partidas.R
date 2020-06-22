@@ -26,7 +26,7 @@ partidas <- purrr::map_df(
       marca_temporal = lubridate::as_datetime(marca_temporal),
       nombre_partida = as.factor(nombre_partida),
       id_partida = str_pad(id_partida, width = 3, pad = "0"),
-      numero_partida = str_pad(numero_partida, width = 3, pad = "0")
+      numero_partida = str_pad(numero_partida, width = 2, pad = "0")
     )
   }
 )
