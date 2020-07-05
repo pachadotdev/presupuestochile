@@ -29,4 +29,9 @@ presupuestos <- purrr::map_df(
   }
 )
 
+presupuestos <- presupuestos %>%
+  mutate(
+    nombre_presupuesto = as.factor(toupper(iconv(as.character(nombre_presupuesto), to = "ASCII//TRANSLIT")))
+  )
+
 usethis::use_data(presupuestos, compress = "xz", overwrite = T)

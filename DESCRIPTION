@@ -12,7 +12,7 @@ Authors@R: c(
   )
 Description: Proporciona los datos del Presupuesto de la Nacion de Chile en
   formato Tidy Data.
-URL: Https://github.com/pachamaltese/presupuestochile/issues
+URL: https://github.com/pachamaltese/presupuestochile/issues
 BugReports: https://github.com/pachamaltese/presupuestochile/issues
 License: CC0
 Encoding: UTF-8

@@ -45,4 +45,26 @@ capitulos <- purrr::map_df(
   }
 )
 
+capitulos <- capitulos %>%
+  mutate(
+    nombre_capitulo = as.character(nombre_capitulo),
+    nombre_capitulo = case_when(
+      nombre_capitulo == "SUBSECRETARÍA DE RELACIONES ECONÓMICAS INTERNACIONALES" ~ "Subsecretaría de Relaciones Económicas Internacionales",
+      nombre_capitulo == "SUBSECRETARIA DE CIENCIA, TECNOLOGÍA, CONOCIMIENTO E INNOVACIÓN" ~ "Subsecretaria de Ciencia, Tecnología, Conocimiento e Innovación",
+      nombre_capitulo == "SERVICIO ELECTORAL" ~ "Servicio Electoral",
+      nombre_capitulo == "INSTITUTO NACIONAL DESARROLLO SUSTENTABLE PESCA ARTESANAL Y ACUICULTURA" ~ "Instituto Nacional Desarrollo Sustentable Pesca Artesanal y Acuicultura",
+      nombre_capitulo == "DIRECCIÓN GENERAL DE PROMOCIÓN DE EXPORTACIONES" ~ "Dirección General de Promoción de Exportaciones",
+      nombre_capitulo == "DIRECCIÓN GENERAL DE CONCESIONES DE OBRAS PÚBLICAS" ~ "Dirección General de Promoción de Exportaciones",
+      nombre_capitulo == "DIRECCIÓN GENERAL DE CONCESIONES DE OBRAS PÚBLICAS" ~ "Dirección General de Concesiones de Obras Públicas",
+      nombre_capitulo == "DIRECCIÓN DE BIBLIOTECAS, ARCHIVOS Y MUSEOS" ~ "Dirección de Bibliotecas, Archivos y Museos",
+      nombre_capitulo == "CONSEJO NACIONAL DE LA CULTURA Y LAS ARTES" ~ "Consejo Nacional de la Cultura y las Artes",
+      TRUE ~ nombre_capitulo
+    )
+  )
+
+capitulos <- capitulos %>%
+  mutate(
+    nombre_capitulo = as.factor(toupper(iconv(nombre_capitulo, to = "ASCII//TRANSLIT")))
+  )
+
 usethis::use_data(capitulos, compress = "xz", overwrite = T)

@@ -31,4 +31,21 @@ partidas <- purrr::map_df(
   }
 )
 
+partidas <- partidas %>%
+  mutate_if(is.factor, as.character) %>%
+  mutate(
+    nombre_partida = case_when(
+      nombre_partida == "ADQUISICION DE ACTIVOS FINANCIEROS" ~ "ADQUISICIÓN DE ACTIVOS FINANCIEROS",
+      nombre_partida == "INGRESOS DE OPERACION" ~ "INGRESOS DE OPERACIÓN",
+      nombre_partida == "INICIATIVAS DE INVERSION" ~ "INICIATIVAS DE INVERSIÓN",
+      nombre_partida == "PRESTAMOS" ~ "PRÉSTAMOS",
+      TRUE ~ nombre_partida
+    )
+  )
+
+partidas <- partidas %>%
+  mutate(
+    nombre_partida = as.factor(toupper(iconv(nombre_partida, to = "ASCII//TRANSLIT")))
+  )
+
 usethis::use_data(partidas, compress = "xz", overwrite = T)

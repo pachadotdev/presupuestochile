@@ -30,7 +30,7 @@ programas <- purrr::map_df(
       mes_ultima_ejecucion_ingreso_valor_vigente_programa = dp$UltimaEjecucionIngreso$valorVigente,
       mes_ultima_ejecucion_ingreso_valor_ejecutado_programa = dp$UltimaEjecucionIngreso$valorEjecutado,
       tiene_glosas = as.logical(dp$tieneGlosas),
-      cantidad_programas = length(dp$Programas)
+      cantidad_subtitulos = length(dp$Subtitulos)
     )
 
     d <- d %>% mutate(
@@ -44,5 +44,10 @@ programas <- purrr::map_df(
     )
   }
 )
+
+programas <- programas %>%
+  mutate(
+    nombre_programa = as.factor(toupper(iconv(nombre_programa, to = "ASCII//TRANSLIT")))
+  )
 
 usethis::use_data(programas, compress = "xz", overwrite = T)

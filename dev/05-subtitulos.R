@@ -40,4 +40,9 @@ subtitulos <- purrr::map_df(
   }
 )
 
+subtitulos <- subtitulos %>%
+  mutate(
+    nombre_subtitulo = as.factor(toupper(iconv(as.character(nombre_subtitulo), to = "ASCII//TRANSLIT")))
+  )
+
 usethis::use_data(subtitulos, compress = "xz", overwrite = T)
